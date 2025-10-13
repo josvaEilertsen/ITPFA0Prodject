@@ -1,0 +1,1 @@
+Yoh wassup, so the notebook is like a super dooper draft, and the MainScript is like the more refined drafr, and then there will be a final one after this one. 
