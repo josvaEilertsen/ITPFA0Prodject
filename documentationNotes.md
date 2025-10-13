@@ -16,6 +16,14 @@
 
 -- Line 76 - 78 Rounding I think it makes the output look neater and more pridicatable.
 
+-- Line 80 - 108 I dont know how I feel about this block of code, I will revisit this later.
+
+-- Line 110 - 119 Display data
+
+-- Line 121 - 129 Exporting the dataframes to csv files
+
+
+
 
 
 
