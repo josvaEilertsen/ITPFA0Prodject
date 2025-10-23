@@ -101,3 +101,42 @@ df_exam2.to_csv('examination_data_exam2.csv')
 print("Successfully saved two CSV files:")
 print("examination_data_exam1.csv")
 print("examination_data_exam2.csv")
+
+# %%
+# Question 2: Create frequency tables
+
+# --- Explanation for Categorical Data ---
+# For columns with distinct categories like 'studentAgeGroup' and 'avgHoursSpentStudyingOnCampus',
+# we can use the .value_counts() method to get a count of each category.
+
+print("--- Frequency Table for Student Age Groups (Exam 1) ---")
+age_freq_exam1 = df_exam1['studentAgeGroup'].value_counts()
+display(age_freq_exam1)
+print("\n")
+
+print("--- Frequency Table for Avg Study Hours (Exam 1) ---")
+hours_freq_exam1 = df_exam1['avgHoursSpentStudyingOnCampus'].value_counts()
+display(hours_freq_exam1)
+print("\n")
+
+# --- Explanation for Numerical Data ---
+# For numerical data like 'studentMark_Percentage', it's more useful to group the values
+# into bins or ranges first. We can use the pd.cut() function for this.
+
+# 1. Define the bins (grade boundaries) and labels for the marks.
+mark_ranges = [0, 49.99, 59.99, 69.99, 79.99, 100]
+mark_labels = [
+    'Fail (0-49)', 
+    'D (50-59)', 
+    'C (60-69)', 
+    'B (70-79)', 
+    'A (80-100)'
+]
+
+# 2. Create a new temporary column containing the mark categories for each exam.
+df_exam1['markCategory'] = pd.cut(df_exam1['studentMark_Percentage'], bins=mark_ranges, labels=mark_labels, include_lowest=True)
+
+print("--- Frequency Table for Student Marks (Exam 1) ---")
+mark_freq_exam1 = df_exam1['markCategory'].value_counts().sort_index() # .sort_index() to order the grades
+display(mark_freq_exam1)
+print("\n")
