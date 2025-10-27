@@ -4,6 +4,7 @@
 import pandas as pd
 import numpy as np
 import random 
+import matplotlib.pyplot as plt
 from IPython.display import display
 
 #Limits
@@ -135,3 +136,28 @@ print("\n")
 
 # %%
 #Question 2 - graphs 
+#Bar Chart: Ages and Number of Students
+#count
+age_counts = df_exam1['studentAgeGroup'].value_counts()
+
+#Define catogories
+age_order = ['18-25', '25-35', '35-45', 'over 45']
+age_counts = age_counts.reindex(age_order)
+
+#Creating the chart
+plt.figure(figsize=(10, 6))
+plt.bar(age_counts.index, age_counts.values, color='skyblue')
+
+#Adding title and label
+plt.title('Number of Students in Each Age Group')
+plt.xlabel('Age Group')
+plt.ylabel('Number of Students')
+
+#Grid linees
+plt.grid(axis='y', linestyle='--', alpha=0.7)
+
+#Save chart
+plt.savefig('age_distribution_bar_chart.png')
+
+#Clear plt
+plt.clf()
