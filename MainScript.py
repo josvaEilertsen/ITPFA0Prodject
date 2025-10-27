@@ -132,3 +132,6 @@ print("--- Frequency Table for Student Marks (Exam 1) ---")
 mark_freq_exam1 = df_exam1['markCategory'].value_counts().sort_index() #order and count grade
 display(mark_freq_exam1)
 print("\n")
+
+# %%
+#Question 2 - graphs 
