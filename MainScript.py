@@ -161,3 +161,50 @@ plt.savefig('age_distribution_bar_chart.png')
 
 #Clear plt
 plt.clf()
+
+#%%
+#Line graph
+#group the DataFrame by avgHoursSpentStudyingOnCampus
+#calculate average studentMark_Percentage 
+correlation_data = df_exam1.groupby('avgHoursSpentStudyingOnCampus')['studentMark_Percentage'].mean()
+
+#Sort data
+correlation_data = correlation_data.sort_index()
+
+#Creating the chart
+plt.figure(figsize=(10, 6))
+#The line style
+plt.plot(correlation_data.index, correlation_data.values, marker='o', linestyle='-', color='green')
+
+#Adding title and label
+plt.title('Correlation Between Study Hours and Exam Marks')
+plt.xlabel('Average Hours Spent Studying on Campus')
+plt.ylabel('Average Student Mark (%)')
+plt.grid(True)
+plt.savefig('marks_vs_study_hours_line_graph.png')
+plt.clf()
+
+# %%
+#Scatter Chart
+plt.figure(figsize=(10, 6))
+plt.scatter(df_exam1['timeTakenOnExamination_minutes'], df_exam1['studentMark_Percentage'], alpha=0.5, color='purple')
+
+plt.title('Student Mark vs. Time Taken on Examination')
+plt.xlabel('Time Taken on Examination (minutes)')
+plt.ylabel('Student Mark (%)')
+plt.grid(True)
+plt.savefig('mark_vs_time_taken_scatter.png')
+plt.clf()
+
+#%%
+#Scatter chart
+plt.figure(figsize=(10, 6))
+
+plt.scatter(df_exam1['studentAgeGroup'], df_exam1['avgHoursSpentStudyingOnCampus'], alpha=0.5, color='orange')
+
+plt.title('Time Spent on Campus vs. Student Age Group')
+plt.xlabel('Student Age Group')
+plt.ylabel('Average Hours Spent Studying on Campus')
+plt.grid(True)
+plt.savefig('campus_time_vs_age_scatter.png')
+plt.clf()
